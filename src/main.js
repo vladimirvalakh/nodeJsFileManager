@@ -1,7 +1,7 @@
-import readline from 'readline';
-import process, { exit, argv } from 'process';
+import process, { argv } from 'process';
 
-const exitKeyCode = '\x03'
+const exitKeyCode = '^C'
+const exitCommandText = '.exit'
 const userNameKey = argv.find((key) => key.startsWith('--username'));
 const isUserNameKey = userNameKey?.indexOf('=');
 const username = isUserNameKey
@@ -12,17 +12,18 @@ process.on('exit', () => {
     console.log(`Thank you for using File Manager, ${username}, goodbye!`);
 });
 
-const main = () => {
+const main = async () => {
     console.log(`Welcome to the File Manager, ${username}!`)
 
-    readline.emitKeypressEvents(process.stdin);
-    process.stdin.setRawMode(true);
+    process.stdin.on('data', data => {
+        const isExitSignal =
+            (data.toString().trim() === exitCommandText)
+            || (data.toString().trim() === exitKeyCode)
 
-    process.stdin.on('keypress', (str) => {
-        if (str === exitKeyCode) {
-            exit()
+        if (isExitSignal) {
+            process.exit()
         }
-    })
+    });
 };
 
-await main()
+await main();
