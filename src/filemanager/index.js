@@ -1,18 +1,21 @@
 import {stdin, stdout, cwd} from 'process';
 import {createInterface} from 'readline/promises';
-import {commands} from './commands.js';
-import {up} from './actions/index.js'
+import { ls } from './actions/nav/ls.js';
+import { up } from './actions/nav/up.js';
+import { cd } from './actions/nav/cd.js';
+
+const action = {
+    'up': up,
+    'ls': ls,
+    'cd': cd,
+};
 
 const readline = createInterface({
     input: stdin,
     output: stdout,
 });
 
-export const action = {
-    [commands.up]: up,
-};
-
-export const getCommandText = (commandText) => {
+const getCommandText = (commandText) => {
     let command, key, value = '';
 
     command = commandText.indexOf(' ') !== -1
