@@ -4,12 +4,14 @@ import { ls } from './actions/nav/ls.js';
 import { up } from './actions/nav/up.js';
 import { cd } from './actions/nav/cd.js';
 import { add } from './actions/files/add.js';
+import { rn } from './actions/files/rn.js';
 
 const action = {
     'up': up,
     'ls': ls,
     'cd': cd,
     'add': add,
+    'rn': rn,
 };
 
 const readline = createInterface({
