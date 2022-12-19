@@ -5,6 +5,7 @@ import { up } from './actions/nav/up.js';
 import { cd } from './actions/nav/cd.js';
 import { add } from './actions/files/add.js';
 import { rn } from './actions/files/rn.js';
+import { cp } from './actions/files/cp.js';
 
 const action = {
     'up': up,
@@ -12,6 +13,7 @@ const action = {
     'cd': cd,
     'add': add,
     'rn': rn,
+    'cp': cp,
 };
 
 const readline = createInterface({
