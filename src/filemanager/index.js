@@ -3,11 +3,13 @@ import {createInterface} from 'readline/promises';
 import { ls } from './actions/nav/ls.js';
 import { up } from './actions/nav/up.js';
 import { cd } from './actions/nav/cd.js';
+import { add } from './actions/files/add.js';
 
 const action = {
     'up': up,
     'ls': ls,
     'cd': cd,
+    'add': add,
 };
 
 const readline = createInterface({
