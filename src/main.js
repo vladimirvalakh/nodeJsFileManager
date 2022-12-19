@@ -1,4 +1,5 @@
 import process, { argv } from 'process';
+import { filemanager } from './filemanager/index.js';
 
 const exitKeyCode = '^C'
 const exitCommandText = '.exit'
@@ -24,6 +25,8 @@ const main = async () => {
             process.exit()
         }
     });
+
+    filemanager(`Waiting a command...\n`);
 };
 
 await main();
